@@ -24,7 +24,7 @@ function reduce(array, reducer, accumulator) {
         result = reducer(result, elem);
     };
 
-    each(array, proxy);
+    accumulator ? each(array, proxy) : each(array.slice(1), proxy);
 
     return result;
 };
@@ -34,6 +34,6 @@ function reduce(array, reducer, accumulator) {
 rl.question('Gimme something: ', (ans) => {
     let result = JSON.parse(ans);
     each(result, logger);
-    console.log('Result of reduce function: ', reduce(result, (x,y)=>{return x*y}, 1));
+    console.log('Result of reducer: ', reduce(result, (x,y)=>{return x*y}));
     rl.close();
 });
