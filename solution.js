@@ -18,24 +18,7 @@ function each(array, action) {
 function logger(x) {console.log(x)};
 
 function reduce(array, reducer, accumulator) {
-    var result = null;
-    
-    if (typeof(accumulator) === 'undefined') {
-        switch (typeof(array[0])) {
-            case 'number':
-                result = 0;
-                break;
-            case 'string':
-                result = '';
-                break;
-            default:
-                console.error('Invalid array input');
-                return;
-                break;
-        }
-    } else {
-        result = accumulator;
-    };
+    var result = accumulator || array[0];
 
     function proxy(elem) {
         result = reducer(result, elem);
@@ -51,6 +34,6 @@ function reduce(array, reducer, accumulator) {
 rl.question('Gimme something: ', (ans) => {
     let result = JSON.parse(ans);
     each(result, logger);
-    console.log(reduce(result, (x,y)=>{return x+y}, 0));
+    console.log('Result of reduce function: ', reduce(result, (x,y)=>{return x*y}, 1));
     rl.close();
 });
