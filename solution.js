@@ -29,8 +29,6 @@ function reduce(array, reducer, accumulator) {
     return result;
 };
 
-// console.log(reduce(a, (x,y)=>{return x+y}, 0));
-
 rl.question('Gimme something: ', (ans) => {
     let result = JSON.parse(ans);
     each(result, logger);
