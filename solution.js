@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 let input = null;
 
 function each(array, action) {
-    var i = 0,
+    let i = 0,
         j = array.length;
     while (i < j) {
         action(array[i]);
@@ -18,7 +18,7 @@ function each(array, action) {
 function logger(x) {console.log(x)};
 
 function reduce(array, reducer, accumulator) {
-    var result = accumulator || array[0];
+    let result = accumulator || array[0];
 
     function proxy(elem) {
         result = reducer(result, elem);
