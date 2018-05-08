@@ -1,4 +1,10 @@
 const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+let input = null;
 
 function each(array, action) {
     var i = 0,
@@ -9,11 +15,7 @@ function each(array, action) {
     };
 };
 
-const a = [1,2,3,4,5]
-
 function logger(x) {console.log(x)};
-
-// each(a, logger);
 
 function reduce(array, reducer, accumulator) {
     var result = null;
@@ -44,4 +46,11 @@ function reduce(array, reducer, accumulator) {
     return result;
 };
 
-console.log(reduce(a, (x,y)=>{return x+y}, 0));
+// console.log(reduce(a, (x,y)=>{return x+y}, 0));
+
+rl.question('Gimme something: ', (ans) => {
+    let result = JSON.parse(ans);
+    each(result, logger);
+    console.log(reduce(result, (x,y)=>{return x+y}, 0));
+    rl.close();
+});
