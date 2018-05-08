@@ -16,12 +16,17 @@ function reduce(list, reducer, accumulator) {
   return output;
 }
 
-// using each
-function reduce(list, reducer, accumulator) {
+// using each and accumulator optional
+function reduce(list, reducer, accumulator = null) {
   let output = accumulator;
   
   each(list, function(element) {
-    output = reducer(output, element);
+    if (output == null) {
+      output = element;
+    } else {
+      output = reducer(output, element);
+      
+    }
   })
 
   return output;
@@ -38,4 +43,4 @@ const reducer = function(accumulator, currentValue) {
 // }
 
 const array = [1,2,3];
-console.log(reduce(array, reducer, 0));
+console.log(reduce(array, reducer));
